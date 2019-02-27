@@ -1,0 +1,46 @@
+﻿@model Miniprojrect.Models.ProjectPizza
+@{
+    ViewBag.Title = "AddPizza";
+}
+
+<!DOCTYPE html>
+<div>
+    @using (Html.BeginForm("FileUpload", "Pizza", FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            Add Pizza<br /><br />
+            @*<div>
+                    @Html.DisplayNameFor(model => model.PizzaID)
+                    @Html.TextBox("PizzaID")
+                </div>*@
+            <br />
+            <div>
+                @Html.DisplayNameFor(model => model.PName)
+                @Html.TextBox("PName")
+
+
+            </div><br />
+            <div>
+                @Html.DisplayNameFor(model => model.Category)
+
+                @Html.TextBox("Category")
+
+            </div><br />
+            <div>
+                @Html.DisplayNameFor(model => model.Price)
+                @Html.TextBox("Price")
+
+
+            </div><br />
+            Image<br />
+            <input type="file" name="file" id="file" style="width: 100%;" /> <br />
+            <input type="submit" value="Upload" class="submit" /> <br />
+
+
+        </div>
+
+
+    }
+</div>
+

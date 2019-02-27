@@ -1,0 +1,89 @@
+﻿@*@model IEnumerable<Miniprojrect.Models.ProjectIngredient>
+
+    @{
+
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+    </head>
+    <body>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IngredientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageURL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageURL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProjectCategory.CategoryName)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IngredientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageURL)
+                </td>
+                <td>
+                    <img src="~/Image/@item.ImageURL" width="100" height="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectCategory.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IngredientID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IngredientID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IngredientID })
+                </td>
+            </tr>
+        }
+
+        </table>
+    </body>
+    </html>*@
+
+
+@model IEnumerable<Miniprojrect.Models.ProjectIngredient>
+@{
+    ViewBag.Title = "Index1";
+}
+<br /> <br />
+@using (Html.BeginForm("FileUpload", "ProjectIngredients", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+
+{
+    <div>
+        Ingredient Name<br />
+        @Html.TextBox("PName") <br />
+        Image<br />
+        <input type="file" name="file" id="file" style="width: 100%;" /> <br />
+        <input type="submit" value="Upload" class="submit" /> <br />
+        @*Category<br />
+            @Html.TextBox("Category") <br />*@
+        Price<br />
+        @Html.TextBox("Price") <br />
+    </div>
+}
+

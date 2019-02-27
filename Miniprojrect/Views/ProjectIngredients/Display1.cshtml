@@ -1,0 +1,32 @@
+﻿@using Miniprojrect.Models;
+@{
+    ViewBag.Title = "Display1";
+}
+@{
+    Training_12DecMumbaiEntities3 db = new Training_12DecMumbaiEntities3();
+}
+<table border="1">
+    <thead>
+        <tr>
+            <th>Ingredient Name</th>
+            <th>ImageURL</th>
+            <th>Image</th>
+          
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in db.ProjectIngredients)
+        {
+            <tr>
+
+                <td>@item.IngredientName</td>
+                <td>@item.ImageURL</td>
+                <td><img src="~/Image/@item.ImageURL" width="100" height="100" /></td>
+                @*<td>@item.CategoryID</td>*@
+                <td>@item.Price</td>
+            </tr>
+            
+        }
+    </tbody>
+</table>

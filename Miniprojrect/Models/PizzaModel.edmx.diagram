@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a18df8392556450d90fb5000353139c8" Name="Diagram1">
+        <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectCategory" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectEmployee" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectOrder" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectPizza" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectUser" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectIngredient" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="Training_12DecMumbaiModel1.FK__ProjectCa__Pizza__21CBDF4D" ManuallyRouted="false" />
+        <AssociationConnector Association="Training_12DecMumbaiModel1.FK__ProjectIn__Categ__0035E158" ManuallyRouted="false" />
+        <AssociationConnector Association="Training_12DecMumbaiModel1.FK__ProjectOr__Pizza__75B852E5" ManuallyRouted="false" />
+        <AssociationConnector Association="Training_12DecMumbaiModel1.FK__ProjectOr__UserI__74C42EAC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

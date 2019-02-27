@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Training_12DecMumbaiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ProjectCategories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="PizzaID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProjectEmployee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PreFix" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmpId" Type="varchar" MaxLength="57" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="FName" Type="varchar" MaxLength="20" />
+          <Property Name="LName" Type="varchar" MaxLength="20" />
+          <Property Name="Addr" Type="varchar" MaxLength="30" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="10" />
+          <Property Name="City" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ProjectIngredients">
+          <Key>
+            <PropertyRef Name="IngredientID" />
+          </Key>
+          <Property Name="IngredientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IngredientName" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="500" />
+          <Property Name="CategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProjectOrders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderStatus" Type="varchar" MaxLength="20" />
+          <Property Name="TotalPrice" Type="money" />
+          <Property Name="DeliveryDateTime" Type="datetime" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PreFix" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmpId" Type="varchar" MaxLength="57" StoreGeneratedPattern="Computed" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="PizzaID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProjectPizzas">
+          <Key>
+            <PropertyRef Name="PizzaID" />
+          </Key>
+          <Property Name="PizzaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PName" Type="varchar" MaxLength="50" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="500" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+        </EntityType>
+        <EntityType Name="ProjectUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="varchar" MaxLength="20" />
+          <Property Name="LName" Type="varchar" MaxLength="20" />
+          <Property Name="Addr" Type="varchar" MaxLength="30" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="10" />
+          <Property Name="City" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__ProjectCa__Pizza__21CBDF4D">
+          <End Role="ProjectPizzas" Type="Self.ProjectPizzas" Multiplicity="0..1" />
+          <End Role="ProjectCategories" Type="Self.ProjectCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectPizzas">
+              <PropertyRef Name="PizzaID" />
+            </Principal>
+            <Dependent Role="ProjectCategories">
+              <PropertyRef Name="PizzaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectIn__Categ__5A103870">
+          <End Role="ProjectCategories" Type="Self.ProjectCategories" Multiplicity="0..1" />
+          <End Role="ProjectIngredients" Type="Self.ProjectIngredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectCategories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ProjectIngredients">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectOr__EmpId__4050666D">
+          <End Role="ProjectEmployee" Type="Self.ProjectEmployee" Multiplicity="0..1" />
+          <End Role="ProjectOrders" Type="Self.ProjectOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectEmployee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="ProjectOrders">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectOr__Pizza__4238AEDF">
+          <End Role="ProjectPizzas" Type="Self.ProjectPizzas" Multiplicity="0..1" />
+          <End Role="ProjectOrders" Type="Self.ProjectOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectPizzas">
+              <PropertyRef Name="PizzaID" />
+            </Principal>
+            <Dependent Role="ProjectOrders">
+              <PropertyRef Name="PizzaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectOr__UserI__41448AA6">
+          <End Role="ProjectUser" Type="Self.ProjectUser" Multiplicity="0..1" />
+          <End Role="ProjectOrders" Type="Self.ProjectOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProjectOrders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Training_12DecMumbaiModelStoreContainer">
+          <EntitySet Name="ProjectCategories" EntityType="Self.ProjectCategories" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="ProjectEmployee" EntityType="Self.ProjectEmployee" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="ProjectIngredients" EntityType="Self.ProjectIngredients" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="ProjectOrders" EntityType="Self.ProjectOrders" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="ProjectPizzas" EntityType="Self.ProjectPizzas" Schema="sqluser" store:Type="Tables" />
+          <EntitySet Name="ProjectUser" EntityType="Self.ProjectUser" Schema="sqluser" store:Type="Tables" />
+          <AssociationSet Name="FK__ProjectCa__Pizza__21CBDF4D" Association="Self.FK__ProjectCa__Pizza__21CBDF4D">
+            <End Role="ProjectPizzas" EntitySet="ProjectPizzas" />
+            <End Role="ProjectCategories" EntitySet="ProjectCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectIn__Categ__5A103870" Association="Self.FK__ProjectIn__Categ__5A103870">
+            <End Role="ProjectCategories" EntitySet="ProjectCategories" />
+            <End Role="ProjectIngredients" EntitySet="ProjectIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectOr__EmpId__4050666D" Association="Self.FK__ProjectOr__EmpId__4050666D">
+            <End Role="ProjectEmployee" EntitySet="ProjectEmployee" />
+            <End Role="ProjectOrders" EntitySet="ProjectOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectOr__Pizza__4238AEDF" Association="Self.FK__ProjectOr__Pizza__4238AEDF">
+            <End Role="ProjectPizzas" EntitySet="ProjectPizzas" />
+            <End Role="ProjectOrders" EntitySet="ProjectOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectOr__UserI__41448AA6" Association="Self.FK__ProjectOr__UserI__41448AA6">
+            <End Role="ProjectUser" EntitySet="ProjectUser" />
+            <End Role="ProjectOrders" EntitySet="ProjectOrders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Training_12DecMumbaiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ProjectCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PizzaID" Type="Int32" />
+          <NavigationProperty Name="ProjectPizza" Relationship="Self.FK__ProjectCa__Pizza__21CBDF4D" FromRole="ProjectCategories" ToRole="ProjectPizzas" />
+          <NavigationProperty Name="ProjectIngredients" Relationship="Self.FK__ProjectIn__Categ__5A103870" FromRole="ProjectCategories" ToRole="ProjectIngredients" />
+        </EntityType>
+        <EntityType Name="ProjectEmployee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PreFix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpId" Type="String" MaxLength="57" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Addr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProjectOrders" Relationship="Self.FK__ProjectOr__EmpId__4050666D" FromRole="ProjectEmployee" ToRole="ProjectOrders" />
+        </EntityType>
+        <EntityType Name="ProjectOrder">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DeliveryDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PreFix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpId" Type="String" MaxLength="57" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="PizzaID" Type="Int32" />
+          <NavigationProperty Name="ProjectEmployee" Relationship="Self.FK__ProjectOr__EmpId__4050666D" FromRole="ProjectOrders" ToRole="ProjectEmployee" />
+          <NavigationProperty Name="ProjectPizza" Relationship="Self.FK__ProjectOr__Pizza__4238AEDF" FromRole="ProjectOrders" ToRole="ProjectPizzas" />
+          <NavigationProperty Name="ProjectUser" Relationship="Self.FK__ProjectOr__UserI__41448AA6" FromRole="ProjectOrders" ToRole="ProjectUser" />
+        </EntityType>
+        <EntityType Name="ProjectPizza">
+          <Key>
+            <PropertyRef Name="PizzaID" />
+          </Key>
+          <Property Name="PizzaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="ProjectCategories" Relationship="Self.FK__ProjectCa__Pizza__21CBDF4D" FromRole="ProjectPizzas" ToRole="ProjectCategories" />
+          <NavigationProperty Name="ProjectOrders" Relationship="Self.FK__ProjectOr__Pizza__4238AEDF" FromRole="ProjectPizzas" ToRole="ProjectOrders" />
+        </EntityType>
+        <EntityType Name="ProjectUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Addr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProjectOrders" Relationship="Self.FK__ProjectOr__UserI__41448AA6" FromRole="ProjectUser" ToRole="ProjectOrders" />
+        </EntityType>
+        <EntityType Name="ProjectIngredient">
+          <Key>
+            <PropertyRef Name="IngredientID" />
+          </Key>
+          <Property Name="IngredientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IngredientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ImageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <NavigationProperty Name="ProjectCategory" Relationship="Self.FK__ProjectIn__Categ__5A103870" FromRole="ProjectIngredients" ToRole="ProjectCategories" />
+        </EntityType>
+        <Association Name="FK__ProjectCa__Pizza__21CBDF4D">
+          <End Role="ProjectPizzas" Type="Self.ProjectPizza" Multiplicity="0..1" />
+          <End Role="ProjectCategories" Type="Self.ProjectCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectPizzas">
+              <PropertyRef Name="PizzaID" />
+            </Principal>
+            <Dependent Role="ProjectCategories">
+              <PropertyRef Name="PizzaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectIn__Categ__5A103870">
+          <End Role="ProjectCategories" Type="Self.ProjectCategory" Multiplicity="0..1" />
+          <End Role="ProjectIngredients" Type="Self.ProjectIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectCategories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ProjectIngredients">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectOr__EmpId__4050666D">
+          <End Role="ProjectEmployee" Type="Self.ProjectEmployee" Multiplicity="0..1" />
+          <End Role="ProjectOrders" Type="Self.ProjectOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectEmployee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="ProjectOrders">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectOr__Pizza__4238AEDF">
+          <End Role="ProjectPizzas" Type="Self.ProjectPizza" Multiplicity="0..1" />
+          <End Role="ProjectOrders" Type="Self.ProjectOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectPizzas">
+              <PropertyRef Name="PizzaID" />
+            </Principal>
+            <Dependent Role="ProjectOrders">
+              <PropertyRef Name="PizzaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectOr__UserI__41448AA6">
+          <End Role="ProjectUser" Type="Self.ProjectUser" Multiplicity="0..1" />
+          <End Role="ProjectOrders" Type="Self.ProjectOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProjectOrders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Training_12DecMumbaiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProjectCategories" EntityType="Self.ProjectCategory" />
+          <EntitySet Name="ProjectEmployees" EntityType="Self.ProjectEmployee" />
+          <EntitySet Name="ProjectOrders" EntityType="Self.ProjectOrder" />
+          <EntitySet Name="ProjectPizzas" EntityType="Self.ProjectPizza" />
+          <EntitySet Name="ProjectUsers" EntityType="Self.ProjectUser" />
+          <EntitySet Name="ProjectIngredients" EntityType="Self.ProjectIngredient" />
+          <AssociationSet Name="FK__ProjectCa__Pizza__21CBDF4D" Association="Self.FK__ProjectCa__Pizza__21CBDF4D">
+            <End Role="ProjectPizzas" EntitySet="ProjectPizzas" />
+            <End Role="ProjectCategories" EntitySet="ProjectCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectIn__Categ__5A103870" Association="Self.FK__ProjectIn__Categ__5A103870">
+            <End Role="ProjectCategories" EntitySet="ProjectCategories" />
+            <End Role="ProjectIngredients" EntitySet="ProjectIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectOr__EmpId__4050666D" Association="Self.FK__ProjectOr__EmpId__4050666D">
+            <End Role="ProjectEmployee" EntitySet="ProjectEmployees" />
+            <End Role="ProjectOrders" EntitySet="ProjectOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectOr__Pizza__4238AEDF" Association="Self.FK__ProjectOr__Pizza__4238AEDF">
+            <End Role="ProjectPizzas" EntitySet="ProjectPizzas" />
+            <End Role="ProjectOrders" EntitySet="ProjectOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectOr__UserI__41448AA6" Association="Self.FK__ProjectOr__UserI__41448AA6">
+            <End Role="ProjectUser" EntitySet="ProjectUsers" />
+            <End Role="ProjectOrders" EntitySet="ProjectOrders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Training_12DecMumbaiModelStoreContainer" CdmEntityContainer="Training_12DecMumbaiEntities">
+          <EntitySetMapping Name="ProjectCategories">
+            <EntityTypeMapping TypeName="Training_12DecMumbaiModel.ProjectCategory">
+              <MappingFragment StoreEntitySet="ProjectCategories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="PizzaID" ColumnName="PizzaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectEmployees">
+            <EntityTypeMapping TypeName="Training_12DecMumbaiModel.ProjectEmployee">
+              <MappingFragment StoreEntitySet="ProjectEmployee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PreFix" ColumnName="PreFix" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectOrders">
+            <EntityTypeMapping TypeName="Training_12DecMumbaiModel.ProjectOrder">
+              <MappingFragment StoreEntitySet="ProjectOrders">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="DeliveryDateTime" ColumnName="DeliveryDateTime" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PreFix" ColumnName="PreFix" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PizzaID" ColumnName="PizzaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectPizzas">
+            <EntityTypeMapping TypeName="Training_12DecMumbaiModel.ProjectPizza">
+              <MappingFragment StoreEntitySet="ProjectPizzas">
+                <ScalarProperty Name="PizzaID" ColumnName="PizzaID" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectUsers">
+            <EntityTypeMapping TypeName="Training_12DecMumbaiModel.ProjectUser">
+              <MappingFragment StoreEntitySet="ProjectUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectIngredients">
+            <EntityTypeMapping TypeName="Training_12DecMumbaiModel.ProjectIngredient">
+              <MappingFragment StoreEntitySet="ProjectIngredients">
+                <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+                <ScalarProperty Name="IngredientName" ColumnName="IngredientName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,115 @@
+﻿
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
+}
+
+
+    <title>Index</title>
+    <link href="~/UserStylesheet.css" rel="stylesheet" />
+
+<body style="background-color:darkgray">
+    <div>
+
+        <br />
+        <br />  <br />  <br />  <br />  <br />
+
+        @*<div class="col-xs-6 col-md-3" style="height:300px">
+            <div class="thumbnail" style="background-color:darkseagreen">
+                <h3 id="cen">
+                    Today's total orders <br /> <br />
+                    <span class="label label-success">New</span>
+                </h3>
+
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-md-3" style="height:300px">
+            <div class="thumbnail" style="background-color:deepskyblue">
+                <h3 id="cen">
+                    Today's total orders <br /> <br />
+                    <span class="label label-info">New</span>
+                </h3>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-md-3" style="height:300px">
+            <div class="thumbnail" style="background-color:orange">
+                <h3 id="cen">
+                    Today's total orders <br /> <br />
+                    <span class="label label-warning">New</span>
+                </h3>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-md-3" style="height:300px">
+            <div class="thumbnail" style="background-color:gray">
+                <h3 id="cen">
+                    Today's total orders <br /> <br />
+                    <span class="label label-default">New</span>
+                </h3>
+            </div>
+        </div>*@
+
+
+
+        <div id="content">
+            <div class="row">
+                <h3>Employee</h3>
+                <div class="btn-group btn-group-lg">
+                    <a href="/Admin/CreateUser/" type="button" id="thumb" class="btn btn-default">Add An User</a>
+                    <a href="/Admin/AssignRole/" type="button" id="thumb" class="btn btn-default">Assign Employee Role</a>
+                   @*<button type="button" id="thumb" class="btn btn-default">Right</button>*@
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <h3>Orders</h3>
+                <div class="btn-group btn-group-lg">
+                    <a href="/Employee/Index/" type="button" id="thumb" class="btn btn-default">List All Orders</a>
+                    <a href="/Employee/Create/" type="button" id="thumb" class="btn btn-default">Add An Order</a>
+                    <a href="/Employee/Delete/" type="button" id="thumb" class="btn btn-default">Delete An Order</a>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <h3>Ingredients</h3>
+                <div class="btn-group btn-group-lg">
+                    <a href="/ProjectIngredients/Display1/" type="button" id="thumb" class="btn btn-default">List All Ingredients</a>
+                    <a href="/ProjectIngredients/Index/" type="button" id="thumb" class="btn btn-default">Add An Ingredients</a>
+                    <a href="/ProjectIngredients/Delete/" type="button" id="thumb" class="btn btn-default">Delete An Ingredients</a>
+                </div>
+
+            <hr />
+
+
+            <div class="row">
+                <h3>Pizza</h3>
+                <div class="btn-group btn-group-lg">
+                    <a href="/Pizza/Display/" type="button" id="thumb" class="btn btn-default">Display All Pizzas</a>
+                    <a href="/Pizza/AddPizza/" type="button" id="thumb" class="btn btn-default">Add a Pizza</a>
+                    <a href="/Employee/Index/" type="button" id="thumb" class="btn btn-default">Delete a Pizza</a>
+                </div>
+            </div>
+
+            <hr />
+
+            @*@section Sidebar{
+
+                <h5>Shreya</h5><br /><br /><br /><br /><br />
+                <h5>Jayasree</h5><br /><br /><br />
+                <h5>Jayasree</h5><br /><br /><br /><br />
+                <h5>Shreya</h5><br /><br /><br /><br />
+
+            }*@
+
+        </div>
+
+
+
+    </div>
+</body>

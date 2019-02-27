@@ -1,0 +1,83 @@
+﻿@import url('StyleSheet1.css');
+
+body {
+}
+
+.call {
+    color: blueviolet;
+}
+
+.size {
+    padding: 3px;
+    font-size: 2px;
+    border: none;
+}
+
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+ 
+}
+
+#dropup {
+    position: relative;
+    display: inline-block;
+    background-color: aquamarine;
+}
+
+.dropup-content {
+    display: none;
+    position: absolute;
+    background-color:aliceblue;
+    min-width: 160px;
+    bottom: 50px;
+    z-index: 1;
+}
+
+#drop {
+    /*background-color: burlywood;*/
+    background-color: aliceblue;
+    background-size: 140px;
+    margin-left: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 500px;
+}
+
+.dropup-content a:hover {
+    background-color: aqua;
+    background-size: contain;
+}
+
+.dropup:hover .dropup-content {
+    display: inline-block;
+    background-color: burlywood;
+}
+
+.dropup:hover .dropbtn {
+    background-color: #2980B9;
+}
+
+.solid {
+    border-style: solid;
+    padding: 15px 16px;
+    display: block;
+}
+
+
+.product {
+    width: 30%;
+    margin: 30px;
+}
+
+.form-group {
+    width: 30%;
+    margin: 30px;
+}
+
+#cen {
+    text-align:center;
+}

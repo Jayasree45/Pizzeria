@@ -1,0 +1,113 @@
+﻿
+@{
+    Layout = "~/AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DemoView</title>
+    <link href="~/UserStylesheet.css" rel="stylesheet" />
+</head>
+<body style="background-color:aliceblue">
+    <br />
+    <br />  <br />  <br />  <br />  <br />
+
+    <div class="col-xs-6 col-md-3" style="height:300px">
+        <div class="thumbnail" style="background-color:darkseagreen">
+            <h3 id="cen">
+                Today's total orders <br /> <br />
+                <span class="label label-success">New</span>
+            </h3>
+
+        </div>
+    </div>
+
+    <div class="col-xs-6 col-md-3" style="height:300px">
+        <div class="thumbnail" style="background-color:deepskyblue">
+            <h3 id="cen">
+                Today's total orders <br /> <br />
+                <span class="label label-info">New</span>
+            </h3>
+        </div>
+    </div>
+
+    <div class="col-xs-6 col-md-3" style="height:300px">
+        <div class="thumbnail" style="background-color:orange">
+            <h3 id="cen">
+                Today's total orders <br /> <br />
+                <span class="label label-warning">New</span>
+            </h3>
+        </div>
+    </div>
+
+    <div class="col-xs-6 col-md-3" style="height:300px">
+        <div class="thumbnail" style="background-color:gray">
+            <h3 id="cen">
+                Today's total orders <br /> <br />
+                <span class="label label-default">New</span>
+            </h3>
+        </div>
+    </div>
+
+
+
+    <div id="content">
+        <div class="row">
+            <h5>Employee</h5>
+            <div class="btn-group btn-group-lg">
+                <button type="button" id="thumb" class="btn btn-default">Left</button>
+                <button type="button" id="thumb" class="btn btn-default">Middle</button>
+                <button type="button" id="thumb" class="btn btn-default">Right</button>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <h5>Orders</h5>
+            <div class="btn-group btn-group-lg">
+                <button type="button" id="thumb" class="btn btn-default">Left</button>
+                <button type="button" id="thumb" class="btn btn-default">Middle</button>
+                <button type="button" id="thumb" class="btn btn-default">Right</button>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <h5>Users</h5>
+            <div class="btn-group btn-group-lg">
+                <button type="button" id="thumb" class="btn btn-default">Left</button>
+                <button type="button" id="thumb" class="btn btn-default">Middle</button>
+                <button type="button" id="thumb" class="btn btn-default">Right</button>
+            </div>
+        </div>
+
+        <hr />
+
+
+        <div class="row">
+            <h5>Ingredients</h5>
+            <div class="btn-group btn-group-lg">
+                <button type="button" id="thumb" class="btn btn-default">Left</button>
+                <button type="button" id="thumb" class="btn btn-default">Middle</button>
+                <button type="button" id="thumb" class="btn btn-default">Right</button>
+            </div>
+        </div>
+
+        <hr />
+
+        @*@section Sidebar{
+
+                <h5>Shreya</h5><br /><br /><br /><br /><br />
+                <h5>Jayasree</h5><br /><br /><br />
+                <h5>Jayasree</h5><br /><br /><br /><br />
+                <h5>Shreya</h5><br /><br /><br /><br />
+
+            }*@
+
+    </div>
+</body>
+</html>

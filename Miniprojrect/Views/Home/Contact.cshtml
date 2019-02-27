@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+@*<h2>@ViewBag.Title.</h2>*@
+<h3>@ViewBag.Message</h3>
+
+<address>
+    <img src="~/Image/Dominos-Web-Banner-full-2.png" />
+    <div>
+        <div class="col-md-3 col-md-offset-1 text-left small-screen-center accordians">
+            <div class="info">
+                <br />
+                <h4>Write to Us</h4>
+                <p>Have any feedback or queries? <br>We'd love to hear from you. Write to us at <span class="highlight"><a href="mailto:guestcarePizzeria’ss@jublfood.com">guestcarePizzeria’ss@jublfood.com</a></span></p>
+            </div>
+            <div class="info">
+                <h4>Find your nearest outlet</h4>
+                <p>Try our delicious treats and Rescue hunger with Pizzeria’ss Pizza. <br> <span class="highlight"><a href="https://www.Pizzeria’ss.co.in/store-location/" target="_blank">Locate Nearby Pizza Restaurants</a></span> nearest to you.</p>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-3 col-md-offset-1 text-left small-screen-center accordians">
+        <div class="info">
+            <br />
+            Pizzeria Shop <br />
+            M4-2B Godrej Towers Vikhroli, Mumbai.<br />
+            <abbr title="Phone">Contact No:</abbr>
+            880.156.2456
+        </div>
+    </div>
+</address>
+
+<div id="googleMap" style="width:400px;height:300px;"></div>
+
+<script>
+    function myMap() {
+        var mapProp = {
+            center: new google.maps.LatLng(),
+            zoom: 5,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=myMap"></script>
+
+
+<address>
+
+    <strong>Support:</strong>   <a href="mailto:PizzeriaSupport@gmail.com">Support@Pizzeria.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:PizzeriaMarketing@gmail.com">Marketing@Pizzeria.com</a>
+
+</address>
+
+

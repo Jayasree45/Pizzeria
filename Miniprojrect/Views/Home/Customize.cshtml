@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Miniprojrect.Models.ProjectPizza>
+
+@{
+    ViewBag.Title = "Veg Pizza";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Veg   Customize</title>
+    <script src="~/Styles/JavaScript.js"></script>
+    <link href="~/Styles/StyleSheet1.css" rel="stylesheet" />
+</head>
+<h4> Veg Pizzas</h4>
+
+@foreach (var item in Model)
+{
+
+    var S = @item.Price;
+    var M = S + 50;
+    var L = M + 50;
+
+
+
+    //@*<div class="pizzabox" style="height:450px;">*@
+
+    <div class="col-sm-6 col-md-6">
+
+        <h4 style="color:red"> @item.PName</h4>
+        <div href="#" class="thumbnail">
+
+            <img src="~/Image/@item.ImageURL" name="image" width="200" height="250" />
+            <div style="color: green;">
+                <ul>
+                    <li>R : @item.Price</li>
+                    <li>M :@M </li>
+                    <li>L : @L </li>
+                </ul>
+            </div>
+            <div class="dropup" id="dropup">
+                <button class="dropbtn" onclick="window.location=('@Url.Action("CustomizeNow", "Home")')">Customize Now</button>
+                <div class="dropup-content" id="drop">
+                    <div>
+
+                        <span class="call">Size :</span>
+                        @Html.HiddenFor(modelItem => item.PizzaID)
+                        <p>
+                            @*@Html.RadioButtonFor(modelItem => item.Price,  new { onclick = "calculate1(this)" }) <span>250 (per Unit)</span>*@
+                            <input type="radio" name="j" value="@item.Price" onclick="calculate1(this);" />
+                            <label for='regular' class="inlinelabel">Small</label>
+                        </p>
+                        <p>
+                            @*@Html.RadioButtonFor(modelItem => item.Price,  new { onclick = "calculate1(this)" }) <span>350 (per Unit)</span>*@
+                            <input type="radio" name="j" value="@M" onclick="calculate1(this);" />
+                            <label for='regular' class="inlinelabel">Regular</label>
+                        </p>
+                        <p>
+                            @*@Html.RadioButtonFor(modelItem => item.Price, new { onclick = "calculate1(this)" }) <span>450 (per Unit)</span>*@
+                            <input type="radio" name="j" value="@L" onclick="calculate1(this);" />
+                            <label for='regular' class="inlinelabel">Large</label>
+                        </p>
+
+
+                        <input type="text" id="myNumber" oninput="calc1()" />
+                        <br />
+
+                        Price Per Pizza: <output type="text" name="price" id="output"></output>
+                        <output type="number" id="total" />
+                    </div>
+
+                    <br />
+                    <div>
+                        <button style="width:80px;height:40px;background-color:darkseagreen" onclick="window.location=('@Url.Action("ReviewOrder", "Home")')">Quick Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+
