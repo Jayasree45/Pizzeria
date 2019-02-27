@@ -188,7 +188,7 @@ namespace Miniprojrect.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser {
-                    
+                    UserName = model.Email,
                     Email = model.Email,
 
                     FName = model.FName,

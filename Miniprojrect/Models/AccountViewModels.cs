@@ -56,8 +56,8 @@ namespace Miniprojrect.Models
     public class LoginViewModel
     {
         //[Required]
-        //[Display(Name = "UserName")]
-        //public string UserName { get; set; }
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
 
         [Required]
         [Display(Name = "Email")]
@@ -78,10 +78,10 @@ namespace Miniprojrect.Models
         //[Required]
         //[Display(Name = "UserRoles")]
         //public string UserRoles { get; set; }
-       // [Required]
-        
-        //[Display(Name = "UserName")]
-        //public string UserName { get; set; }
+        // [Required]
+
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
 
         [Required]
         [EmailAddress]
