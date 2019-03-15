@@ -58,22 +58,71 @@ function calculate(obj) {
     //quantTotal = getElementById('myNumber') * 100;
 }
 
-function ButtonClickQuickAdd() {
+//function ButtonClickQuickAdd() {
+//    dataObj = JSON.stringify({
+//        'input': $('#myNumber').val(),
+//        'name': $('#total').val()
+//    });
+
+//    $.ajax({
+//        url: "/Home/ReviewOrder",
+//        type: 'POST',
+//        async: false,
+//        dataType: 'json',
+//        contentType: 'application/json',
+//        data: dataObj,
+//        success: function (data) { },
+//        error: function (xhr) { }
+//    });
+
+//}
+
+function reviewFunct() {
+    debugger;
+
+
+    var radioval = $("input[type='radio'][name='j']:checked").val();
+    var output = $('#total').val();
     dataObj = JSON.stringify({
-        'input': $('#myNumber').val(),
-        'name': $('#total').val()
+        'input': radioval,
+        'name': output
     });
 
+    //$.ajax({
+    //    url: "/Home/ReviewOrder",
+    //    type: 'POST',
+    //    async: false,
+    //    dataType: 'json',
+    //    contentType: 'application/json',
+    //    data: dataObj,
+    //    success: function (data) { },
+    //    error: function (xhr) { }
+    //});
+    var saveUrl = "/Home/ReviewOrder1"
+    //'@Url.Action("Home","ReviewOrder")';
+    var newUrl = "/Home/ReviewOrder" + "?" + "input=" + radioval + "&" + "name=" + output;
+    var final = "?input=" + radioval;
+
+    //'@Url.Action("Home","ReviewOrder")';
+
     $.ajax({
-        url: "/Home/ReviewOrder",
         type: 'POST',
-        async: false,
+        url: saveUrl,
+        //  data: dataObj, async: false,
         dataType: 'json',
         contentType: 'application/json',
         data: dataObj,
-        success: function (data) { },
-        error: function (xhr) { }
+        // Some params omitted 
+        success: function (res) {
+            window.location.href = newUrl;
+        },
+        error: function () {
+            alert('The worst error happened!');
+        }
     });
 
+    //var jobValue = document.getElementById('j').value
+    // alert("review");
 }
+
 

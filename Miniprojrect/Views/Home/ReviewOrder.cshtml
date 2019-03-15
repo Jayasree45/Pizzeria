@@ -1,17 +1,40 @@
-﻿
+﻿@model Miniprojrect.Models.jk
+
+
+
 @{
-
+    ViewBag.Title = "Veg Pizza";
 }
-
-<!DOCTYPE html>
-
-<html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>ReviewOrder</title>
+    <title>Reviw order</title>
+    <script src="~/Styles/JavaScript.js"></script>
+    <link href="~/Styles/StyleSheet1.css" rel="stylesheet" />
 </head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+<h4>Your order details</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Your order price per pizza
+        </th>
+        <th>
+            Total price of pizza
+        </th>
+    </tr>
+
+    @*@foreach (var item in Model)
+        {*@
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.input)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.name)
+        </td>
+    </tr>
+    @*}*@
+</table>
+
+
+

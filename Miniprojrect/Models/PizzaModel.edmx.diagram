@@ -7,7 +7,7 @@
       <Diagram DiagramId="a18df8392556450d90fb5000353139c8" Name="Diagram1">
         <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectCategory" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectEmployee" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectOrder" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectOrder" Width="1.5" PointX="3" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectPizza" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectUser" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Training_12DecMumbaiModel1.ProjectIngredient" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />

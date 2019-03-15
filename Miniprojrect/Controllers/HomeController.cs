@@ -49,33 +49,35 @@ namespace Miniprojrect.Controllers
             var model = new List<ProjectPizza>();
             model = db.ProjectPizzas.ToList();
             return View(model);
-        
 
-           ////List<ProjectPizza> model = new List<ProjectPizza>();
-           //// var query = (from cat in db.ProjectCategories join pro in db.ProjectPizzas on cat.PizzaID equals pro.PizzaID
-           ////              where cat.CategoryID == 100
-           ////             select new {
-                          
-           ////                 proID = pro.PizzaID,
-           ////                 proPrice = pro.Price,
-           ////                 proName = pro.PName,
-           ////                 proImageURL = pro.ImageURL
 
-           ////             }).ToList();
+            //List<ProjectPizza> model = new List<ProjectPizza>();
+            //var query = (from cat in db.ProjectCategories
+            //             join pro in db.ProjectPizzas on cat.PizzaID equals pro.PizzaID
+            //             where cat.CategoryID == 100
+            //             select new
+            //             {
 
-           //// foreach (var item in query) //retrieve each item and assign to model
-           //// {
-           ////     model.Add(new ProjectPizza()
-           ////     {
-                    
-           ////         PizzaID = item.proID,
-           ////         Price = item.proPrice,
-           ////         PName = item.proName,
-           ////         ImageURL = item.proImageURL
-           ////     });
-           //// }
-                // query = db.ProjectPizzas.ToList();
-                //return View(model);
+            //                 proID = pro.PizzaID,
+            //                 proPrice = pro.Price,
+            //                 proName = pro.PName,
+            //                 proImageURL = pro.ImageURL
+
+            //             }).ToList();
+
+            //foreach (var item in query) //retrieve each item and assign to model
+            //{
+            //    model.Add(new ProjectPizza()
+            //    {
+
+            //        PizzaID = item.proID,
+            //        Price = item.proPrice,
+            //        PName = item.proName,
+            //        ImageURL = item.proImageURL
+            //    });
+            //}
+            //query = db.ProjectPizzas.ToList();
+            //return View(model);
         }
 
         [HttpPost]
@@ -145,11 +147,30 @@ namespace Miniprojrect.Controllers
         }
 
         [Authorize(Roles ="Admin,Employee,User")]
-        public ActionResult ReviewOrder()
+        //public ActionResult ReviewOrder()
+        //{
+        //    ViewBag.Message = "Your Pizza Page.";
+
+        //    return View();
+        //}
+
+        [HttpPost]
+        public ActionResult ReviewOrder1(jk obj)
         {
             ViewBag.Message = "Your Pizza Page.";
 
-            return View();
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+        //[HttpPost]
+
+        public ActionResult ReviewOrder(string input, string name)
+        {
+            ViewBag.Message = "Your Pizza Page."; ;
+
+            var obj = new jk();
+            obj.input = input;
+            obj.name = name;
+            return View(obj);
         }
     }
 }
